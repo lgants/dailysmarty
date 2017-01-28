@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
   before do
-    @topic = Topic.create(title: "Sports")
+    @topic = FactoryGirl.create(:topic)
   end
 
   describe 'validations' do

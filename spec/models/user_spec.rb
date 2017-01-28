@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'creation' do
     before do
-      @user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "Jon", last_name: "Snow", username: "watcheronthewall")
+      @user = FactoryGirl.create(:user)
     end
 
     it 'should be able to be created if valid' do
@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'should ensure that all usernames are unique' do
-        duplicate_username_user = User.create(email: "test2@test.com", password: "password", password_confirmation: "password", first_name: "Joni", last_name: "Snowy", username: "watcheronthewall")
+        duplicate_username_user = User.create(email: "test2@test.com", password: "password", password_confirmation: "password", first_name: "Joni", last_name: "Snowy", username: @user.username)
         expect(duplicate_username_user).to_not be_valid
       end
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'navigate' do
   before do
-    @topic = Topic.create(title: "Sports")
+    @topic = FactoryGirl.create(:topic)
   end
 
   describe 'index' do
@@ -12,7 +12,7 @@ describe 'navigate' do
     end
 
     it 'renders the list of topics' do
-      Topic.create(title: "Coding")
+      FactoryGirl.create(:second_topic)
       visit topics_path
       # syntax leverages the Regex matcher provided through Capybara
       expect(page).to have_content(/Sports|Coding/)
