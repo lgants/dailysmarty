@@ -1,3 +1,5 @@
+<%= link_to "New Post", new_post_path(topic_id: @topic.id) %>
+
 <%= @posts.each do |post| %>
   <%= link_to post.title, topic_post_path(topic_id: @topic, id: post) %>
   <%= post.content %>

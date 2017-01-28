@@ -35,4 +35,50 @@ describe 'post' do
       expect(page).to have_link(@topic.posts.last.title, href: topic_post_path(topic_id: @topic, id: @topic.posts.last))
     end
   end
+
+  describe 'creation' do
+    before do
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+
+      visit new_post_path
+    end
+
+    it 'should allow a post to be created from the form page and redirect to the show page' do
+      fill_in 'post[title]', with: "Houston Astros"
+      fill_in 'post[content]', with: "Are going all the way"
+      find_field("post[topic_id]").find("option[value='#{@topic.id}']").click
+
+      click_on "Save"
+
+      expect(page).to have_css("h1", text: "Houston Astros")
+    end
+
+    it 'should automatically have a topic selected if clicked on new post from the topic page' do
+      visit new_post_path(topic_id: @topic.id)
+
+      fill_in 'post[title]', with: "Houston Astros"
+      fill_in 'post[content]', with: "Are going all the way"
+
+      click_on "Save"
+
+      expect(page).to have_content("Sports")
+    end
+
+    it 'should have a user associated with the post' do
+      user = FactoryGirl.create(:user)
+      # login_as call method is provided by the devise gem to mock a user signing into the application
+      login_as(user, :scope => :user)
+
+      visit new_post_path
+
+      fill_in 'post[title]', with: "Houston Astros"
+      fill_in 'post[content]', with: "Are going all the way"
+      find_field("post[topic_id]").find("option[value='#{@topic.id}']").click
+
+      click_on "Save"
+
+      expect(page).to have_content("Jon Snow")
+   end
+ end
 end

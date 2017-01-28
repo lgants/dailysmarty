@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :posts
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -11,7 +11,9 @@ class User < ApplicationRecord
   # to prevent complications when usernames used as subdomains
   validates :username, uniqueness: true, presence: true, format: { with: /\A[a-zA-Z]+([a-zA-Z]|\d)*\Z/ }
 
-
+  def full_name
+    self.first_name + " " + self.last_name
+  end
 
   private
 
