@@ -59,3 +59,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '~> 4.1.0'
 gem 'friendly_id', '~> 5.1'
+gem 'pry-rails'

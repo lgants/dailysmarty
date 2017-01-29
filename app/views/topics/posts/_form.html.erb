@@ -1,0 +1,22 @@
+<!-- need to use form_tag because form_for automatically associated with a model, but this is nested -->
+<!-- need conditional logic because edit depends on @topic.id and @post.id, whereas new does not -->
+<!-- coniditonal for form_tag and form_action values refactored into helpers file  -->
+<%= form_tag form_route(source), method: form_action(source) do %>
+
+  <%= text_field_tag "post[title]", (@post.title if @post) || "" %>
+  <%= text_field_tag "post[content]", (@post.content if @post) || "" %>
+
+  <!-- selected option tells form to set the default value of the topic if the params hash contains a value for topic_id (i.e. permts requests emenating from localhost:3000/posts/new?topic_id=2 AND localhost:3000/posts/new) -->
+  <!-- :id sets the 'value' in the html option tag -->
+  <!-- :title sets the text contents of the options tag -->
+  <%= collection_select(:post,
+                        :topic_id,
+                        Topic.all,
+                        :id,
+                        :title,
+                        { selected: (params[:topic_id] if params[:topic_id])})
+  %>
+
+  <%= submit_tag 'Save' %>
+
+<% end %>

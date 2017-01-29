@@ -1,3 +1,5 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.topic.title %></p>
 <p><%= @post.user.full_name %></p>
+
+<%= link_to "Edit Post", edit_topic_post_path(topic_id: @topic.id, id: @post.id) %>

@@ -80,5 +80,29 @@ describe 'post' do
 
       expect(page).to have_content("Jon Snow")
    end
- end
+  end
+
+  describe 'editing' do
+    before do
+      user = FactoryGirl.create(:user)
+      second_user = FactoryGirl.create(:second_user)
+      login_as(user, :scope => :user)
+
+      post = Post.create(title: "starter title", content: "starter content", topic_id: @topic.id, user_id: user.id)
+
+      visit edit_topic_post_path(topic_id: @topic.id, id: post.id)
+    end
+
+    it 'allows a user to edit a post they created' do
+      fill_in 'post[title]', with: "Baseball Stats"
+
+      click_on "Save"
+
+      expect(page).to have_content("Baseball Stats")
+    end
+
+    xit 'does not allow a user to edit a post they did not create' do
+    end
+  end
+
 end
