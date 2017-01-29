@@ -61,3 +61,7 @@ gem 'devise', '~> 4.1.0'
 gem 'friendly_id', '~> 5.1'
 gem 'pry-rails'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+
+gem 'kaminari', '~> 0.17.0'
+gem 'pundit', '~> 1.1'
+gem "gritter", "1.2.0"
