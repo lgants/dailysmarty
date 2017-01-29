@@ -80,17 +80,24 @@ describe 'post' do
 
       expect(page).to have_content("Jon Snow")
    end
+
+   it 'only lets signed in users view the new form' do
+      logout(:user)
+      # need to reload post path to ensure user isn't signed in
+      visit new_post_path
+      expect(current_path).to eq(new_user_session_path)
+    end
   end
 
   describe 'editing' do
     before do
       user = FactoryGirl.create(:user)
-      second_user = FactoryGirl.create(:second_user)
+      @second_user = FactoryGirl.create(:second_user)
       login_as(user, :scope => :user)
 
-      post = Post.create(title: "starter title", content: "starter content", topic_id: @topic.id, user_id: user.id)
+      @post = Post.create(title: "starter title", content: "starter content", topic_id: @topic.id, user_id: user.id)
 
-      visit edit_topic_post_path(topic_id: @topic.id, id: post.id)
+      visit edit_topic_post_path(topic_id: @topic.id, id: @post.id)
     end
 
     it 'allows a user to edit a post they created' do
@@ -101,7 +108,17 @@ describe 'post' do
       expect(page).to have_content("Baseball Stats")
     end
 
-    xit 'does not allow a user to edit a post they did not create' do
+    it 'does not allow a user to access the edit page if they are not signed in' do
+      logout(:user)
+      visit edit_topic_post_path(topic_id: @topic.id, id: @post.id)
+      expect(current_path).to eq(new_user_session_path)
+    end
+
+    it 'does not allow a user to edit a post they did not create' do
+      logout(:user)
+      login_as(@second_user, :scope => :user)
+      visit edit_topic_post_path(topic_id: @topic.id, id: @post.id)
+      expect(current_path).to eq(topic_post_path(topic_id: @topic.id, id: @post.id))
     end
   end
 

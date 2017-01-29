@@ -2,4 +2,6 @@
 <p><%= @post.topic.title %></p>
 <p><%= @post.user.full_name %></p>
 
-<%= link_to "Edit Post", edit_topic_post_path(topic_id: @topic.id, id: @post.id) %>
+<% if current_user && @post.user_id == current_user.id %>
+  <%= link_to "Edit Post", edit_topic_post_path(topic_id: @topic.id, id: @post.id) %>
+<% end %>
