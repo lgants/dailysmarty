@@ -13,6 +13,7 @@
 
     <div class="article-desc">
       <h2><%= link_to post.title, topic_post_path(topic_id: post.topic.slug, id: post) %></h2>
+      <h2><%= link_to post.title, topic_post_path(topic_id: @topic, id: post) %></h2>
       <p><%= post.content %></p>
       <span>By <strong><%= post.user.username %></strong> <%= post.created_at %></span>
     </div>
