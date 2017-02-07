@@ -5,6 +5,10 @@ class TopicsController < ApplicationController
     @topics = Topic.all
   end
 
+  def show
+    redirect_to topic_posts_path(topic_id: @topic)
+  end
+
   def new
     # creates a new instance of topic the form can use
     @topic = Topic.new
