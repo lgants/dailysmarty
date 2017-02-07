@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update]
 
   def index
-    @topics = Topic.all
+    @topics = Topic.page(params[:page]).per(15)
   end
 
   def show
