@@ -1,110 +1,32 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-9 article-content pull-left">
-        <h1 class="col-xs-6 pull-left"><%= @post.title %></h1>
-        <span>By <strong><%= @post.user.full_name %></strong> <%= @post.created_at.strftime("Published: on %m/%d/%Y at %l:%M%P") %></span>
+      <h1 class="col-xs-6 pull-left"><%= @post.title %></h1>
+      <span>By <strong><%= @post.user.full_name %></strong> <%= @post.created_at.strftime("Published: on %m/%d/%Y at %l:%M%P") %></span>
 
-        <p><strong>Topic:</strong> <%= @post.topic.title %></p>
+      <p><strong>Topic:</strong> <%= @post.topic.title %></p>
 
-        <a href="#show-sidebar" class="btn btn-default btn-green show-sidebar"><span>Show More Details</span></a>
+      <a href="#show-sidebar" class="btn btn-default btn-green show-sidebar"><span>Show More Details</span></a>
 
-        <div class="clearfix"></div>
+      <div class="clearfix"></div>
 
-        <p class="col-xs-8 first"><%= @post.content %></p>
+      <p class="col-xs-8 first"><%= @post.content %></p>
 
-        <ul class="social-box clearfix">
-            <li>
-                <span class="icon facebook-icon"></span>
-                <p>226</p>
-            </li>
-            <li>
-                <span class="icon twitter-icon"></span>
-                <p>28</p>
-            </li>
-            <li>
-                <span class="icon pinterest-icon"></span>
-                <p>4793</p>
-            <li>
-                <span class="icon google-icon"></span>
-                <p>8</p>
-            </li>
-        </ul>
-        <hr/>
+      <hr/>
 
-        <div class="actions">
-          <% if current_user && @post.user_id == current_user.id %>
-            <%= link_to "Edit Post", edit_topic_post_path(topic_id: @topic.id, id: @post.id), class: 'btn btn-default btn-green' %>
-          <% end %>
-        </div>
-
+      <div class="actions">
+        <% if current_user && @post.user_id == current_user.id %>
+          <%= link_to "Edit Post", edit_topic_post_path(topic_id: @topic.id, id: @post.id), class: 'btn btn-default btn-green' %>
+        <% end %>
+      </div>
     </div>
     <div class="col-xs-3 article-sidebar pull-right">
-        <div class="next-article">
-            <div class="btn btn-left"></div>
-            <div class="btn btn-right"></div>
-            <h1>Scientists find closest thing yet to Earth-sun twin system</h1>
-            <span>By <strong>Thomas Gibbons-Neff</strong> and <strong>Carol Morell</strong> June 20 at 4:05 PM</span>
-        </div>
-
-        <h1>Tags</h1>
-        <ul class="tags clearfix">
-            <li class="col-xs-12 pull-left">Outer Space</li>
-            <li class="col-xs-6 pull-right">NASA</li>
-            <li class="col-xs-6 pull-left">Planet</li>
-            <li class="col-xs-6 pull-right">SpaceX</li>
-            <li class="col-xs-6 pull-right">Internet</li>
-            <li class="col-xs-12 pull-left">Elon Musk</li>
-            <li class="col-xs-6 pull-right">Austin</li>
-            <li class="col-xs-6 pull-right">Marketing</li>
-        </ul>
-
-        <h1 class="separator">Social Media</h1>
-        <div class="social clearfix">
-            <a href="#facebook" class="facebook"></a>
-            <a href="#twitter" class="twitter"></a>
-            <a href="#linkedin" class="linkedin"></a>
-            <a href="#google" class="google"></a>
-            <a href="#pinterest" class="pinterest"></a>
-        </div>
-
-        <ul class="video-box clearfix">
-            <li class="pull-left">
-                <a href="#video1">
-                    <div class="play"></div>
-                    <img src="images/common/article1.png" />
-                </a>
-            </li>
-            <li class="pull-right">
-                <a href="#video1">
-                    <div class="play"></div>
-                    <img src="images/common/article1.png" />
-                </a>
-            </li>
-            <li class="pull-left">
-                <a href="#video1">
-                    <div class="play"></div>
-                    <img src="images/common/article1.png" />
-                </a>
-            </li>
-        </ul>
-
-        <h1 class="separator">Real Time</h1>
-        <ul class="top-articles2">
-            <li>
-                <span class="pull-left">Food We Digg</span>
-                <span class="pull-right">9:05 PM</span>
-                <a href="#article1"><h2 class="pull-right">From Vrrrramp To Snikt: Exploring Sci-Fi's Most Iconic Movie Sound Effects</h2></a>
-            </li>
-            <li>
-                <span class="pull-left">To Infinity</span>
-                <span class="pull-right">9:05 PM</span>
-                <a href="#article2"><h2 class="pull-right">You’ll Eat Your Vegetables, And You’ll Like It (No, Really)</h2></a>
-            </li>
-            <li>
-                <span class="pull-left">A SCHOLAR OF VIROLOGY</span>
-                <a href="#article3"><h2 class="pull-right">I Went To Tyler Oakley's Slumber Party, And Found Out Why He Went Viral</h2></a>
-            </li>
-        </ul>
+      <div class="next-article">
+        <div class="btn btn-left"></div>
+        <div class="btn btn-right"></div>
+        <h1>Scientists find closest thing yet to Earth-sun twin system</h1>
+        <span>By <strong>Thomas Gibbons-Neff</strong> and <strong>Carol Morell</strong> June 20 at 4:05 PM</span>
+      </div>
     </div>
   </div>
 </div>
