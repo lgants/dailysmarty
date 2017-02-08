@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'posts/new', to: 'topics/posts#new', as: 'new_post'
   post 'posts', to: 'topics/posts#create', as: 'create_post'
 
-  root to: 'static#home'
-
   devise_for :users, controllers: { registrations: 'registrations' }
+
+  root to: 'static#home'
 end

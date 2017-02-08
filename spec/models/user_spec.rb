@@ -10,10 +10,6 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
     end
 
-    it 'should have a default role of: student' do
-      expect(@user.role).to eq('student')
-    end
-
     describe 'validations' do
       it 'should not be valid without a first name' do
         @user.first_name = nil

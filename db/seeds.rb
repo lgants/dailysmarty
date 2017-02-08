@@ -19,7 +19,6 @@ User.create!(
 		first_name: "Jon",
 		last_name: "Snow",
 		username: "wallwatcher",
-		role: "admin"
 	)
 
 puts "Admin user created"
@@ -31,7 +30,6 @@ User.create!(
 		first_name: "Jon",
 		last_name: "Snow",
 		username: "youngwallwatcher",
-		role: "student"
 	)
 
 puts "Student user created"
