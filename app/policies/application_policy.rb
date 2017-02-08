@@ -1,4 +1,6 @@
 class ApplicationPolicy
+  # ApplicationPolicy class is mainly in place to give a structure/naming structure that we can use to override with our own unique requirements
+
   attr_reader :user, :record
 
   def initialize(user, record)

@@ -10,7 +10,7 @@ class Topics::PostsController < ApplicationController
   def index
     @posts = @topic.posts.page(params[:page]).per(10)
   end
-  
+
   def new
   end
 
@@ -26,12 +26,14 @@ class Topics::PostsController < ApplicationController
   end
 
   def edit
-    if @post.user_id != current_user.id
-     redirect_to topic_post_path(topic_id: @post.topic_id, id: @post), notice: 'Your are not authorized to edit this post.'
-    end
+    authorize @post
   end
 
   def update
+    @post = @topic.posts.find(params[:id])
+
+    authorize @post
+
     if @post.update(post_params)
       redirect_to topic_post_path(topic_id: @post.topic_id, id: @post), notice: 'Your post was successfully updated.'
     else

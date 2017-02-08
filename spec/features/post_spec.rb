@@ -118,7 +118,7 @@ describe 'post' do
       logout(:user)
       login_as(@second_user, :scope => :user)
       visit edit_topic_post_path(topic_id: @topic.id, id: @post.id)
-      expect(current_path).to eq(topic_post_path(topic_id: @topic.id, id: @post.id))
+      expect(current_path).to eq(root_path)
     end
   end
 
