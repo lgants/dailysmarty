@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+resources :topics
+resources :admin_users
+resources :posts
+
+    root to: "users#index"
+  end
+
   resources :topics do
     # scope module: :topics do let's the application know that a custom scope will be set up inside of topics and look inside of this block
     scope module: :topics do
