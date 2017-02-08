@@ -32,4 +32,14 @@ describe 'homepage' do
       expect(page).to have_link(@topic.title, href: topic_path(@topic))
     end
   end
+
+  describe 'header' do
+    it 'has a header that displays the users name' do
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+      visit root_path
+
+      expect(page).to have_content("Jon Snow")
+    end
+  end
 end
