@@ -12,7 +12,7 @@ end
 
 puts "100 Topics created"
 
-User.create!(
+AdminUser.create!(
 		email: "admin@test.com",
 		password: "asdfasdf",
 		password_confirmation: "asdfasdf",
