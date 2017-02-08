@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery with: :exception
 
   # overrides the default current_user method provided by devise, since the ApplicationController is called after the Devise gem loads our new method will override the gem method
