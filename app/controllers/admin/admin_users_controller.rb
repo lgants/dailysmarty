@@ -15,14 +15,5 @@ module Admin
 
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions
     # for more information
-    before_filter :authenticate_admin
-
-    def authenticate_admin
-      unless current_user.try(:type) == 'AdminUser'
-        flash[:alert] = "You are not authorized to access this page."
-        redirect_to(root_path)
-      end
-    end
-
   end
 end

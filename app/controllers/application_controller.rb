@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  before_action :get_subdomain
+
   # overrides the default current_user method provided by devise, since ApplicationController is called after Devise gem loads; the current_user method below will override the gem method
   # calling super first tells Rails to simply use the Devise version of current_user
   # if no user is logged in (i.e. if current_user is nil the pipes), || tell the method to instead return an OpenStruct object that has one attribute: full_name and it's set to "Guest"
@@ -18,5 +20,11 @@ class ApplicationController < ActionController::Base
     def user_not_authorized
       flash[:alert] = "You are not authorized to access this page."
       redirect_to(request.referrer || root_path)
+    end
+
+    def get_subdomain
+      puts "The Subdomain is:"
+      puts request.subdomain
+      raise
     end
 end

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :users
-resources :topics
-resources :admin_users
-resources :posts
+    resources :topics
+    resources :admin_users
+    resources :posts
 
     root to: "users#index"
   end
